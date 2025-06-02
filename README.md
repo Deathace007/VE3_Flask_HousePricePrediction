@@ -85,7 +85,6 @@ An advanced machine learning system that predicts house prices using a Random Fo
 - MAE (Mean Absolute Error)
 
 ## Future Improvements
-- Support for GPU acceleration
 - Additional feature engineering
 - Model ensemble techniques
 - API endpoint for predictions
@@ -97,9 +96,3 @@ An advanced machine learning system that predicts house prices using a Random Fo
 - Input validation ensures prediction accuracy
 - The system uses an automated ML pipeline for reproducibility
 
-## Contributing
-Feel free to submit issues, fork the repository, and create pull requests for any improvements.
-
-## Notes
-- You can use your own dataset by replacing `housing.csv` and updating the code accordingly.
-- The model is a simple linear regression for demonstration purposes.
