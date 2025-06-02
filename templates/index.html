@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>House Price Prediction</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <h1>House Price Prediction</h1>
+    <form method="post">
+        <p class="form-description">Enter the house details below to get a price prediction</p>
+        {% for field in form_fields %}
+            <div class="form-group">
+                <label for="{{ field.name }}">{{ field.label }}:</label>
+                {% if field.type == 'number' %}
+                    <input type="number" 
+                           step="any" 
+                           id="{{ field.name }}"
+                           name="{{ field.name }}" 
+                           min="{{ field.min if 'min' in field else '0' }}"
+                           max="{{ field.max if 'max' in field else '' }}"
+                           required>
+                    {% if 'min' in field or 'max' in field %}
+                        <small class="help-text">
+                            {% if 'min' in field and 'max' in field %}
+                                Range: {{ field.min }} - {{ field.max }}
+                            {% elif 'min' in field %}
+                                Minimum: {{ field.min }}
+                            {% elif 'max' in field %}
+                                Maximum: {{ field.max }}
+                            {% endif %}
+                        </small>
+                    {% endif %}
+                {% elif field.type == 'select' %}
+                    <select id="{{ field.name }}" name="{{ field.name }}">
+                        {% for option in field.options %}
+                            <option value="{{ option }}">
+                                {% if option == '1' %}Yes{% elif option == '0' %}No{% else %}{{ option }}{% endif %}
+                            </option>
+                        {% endfor %}
+                    </select>
+                {% endif %}
+            </div>
+        {% endfor %}
+        <input type="submit" value="Get Price Prediction">
+    </form>
+</body>
+</html>
